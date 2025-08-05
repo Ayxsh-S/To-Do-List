@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<script defer src="main.js"></script></head>
+<body>
+    <header><svg width="60" height="60" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0077ff"/>
+      <stop offset="100%" stop-color="#b3d1ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#gradient)" />
+  
+  <!-- Checkmark 1 -->
+  <path d="M128 144l40 40 72-72" fill="none" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Line 1 -->
+  <line x1="280" y1="152" x2="400" y2="152" stroke="white" stroke-width="40" stroke-linecap="round" />
+
+  <!-- Checkmark 2 -->
+  <path d="M128 248l40 40 72-72" fill="none" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Line 2 -->
+  <line x1="280" y1="256" x2="400" y2="256" stroke="white" stroke-width="40" stroke-linecap="round" />
+
+  <!-- Checkmark 3 -->
+  <path d="M128 352l40 40 72-72" fill="none" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Line 3 -->
+  <line x1="280" y1="360" x2="400" y2="360" stroke="white" stroke-width="40" stroke-linecap="round" />
+</svg>
+<h1>To-Do List</h1><div class="mark">Ayxsh-S</div></header>
+    <div class="sidebar">
+        <div class="tabs">
+        <button data-tab="home" class="some-button">Home</button>
+        <button data-tab="notes" class="some-button">Notes</button>
+        <button id="openModalBtn">+</button>
+        <button data-tab="projects" class="some-button">Projects</button>     
+        <div id="taskModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="taskForm">
+                    <h2>Add Task</h2>
+                    <label class="taskTitle" for="taskTitle">Title:</label><br><br>
+                    <input type="text" id="taskTitle" name="taskTitle" placeholder="Title" required><br><br>
+                    <label for="taskDesc">Description:</label><br>
+                    <textarea id="taskDesc" name="taskDesc" rows="4" placeholder="Description" required></textarea><br><br>
+                    <label for="taskProject">Project:</label>
+                    <input type="text" id="taskProject" name="taskProject" placeholder="Project Name" required /><br><br>
+                    <label for="taskDate">Due Date</label>
+                    <input type="date" id="taskDate" name="taskDate" /><br><br>
+                    <div class="priority-wrapper">
+                    <label for="taskPriority">Priority</label>
+                    <div class="custom-dropdown" id="priorityDropdown">
+                      <div class="selected">Select Priority</div>
+                      <div class="dropdown-options hidden">
+                         <div class="option low" data-value="Low">🟢 Low</div>
+                         <div class="option medium" data-value="Medium">🟡 Medium</div>
+                         <div class="option high" data-value="High">🔴 High</div>
+                      </div>                    
+                   </div>
+                   </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+        </div>
+        <div id="detailsModal" class="modal hidden">
+            <div class="modal-content">
+                <span id="detailsClose" class="close">&times;</span>
+                <div id="detailsContent"></div>
+            </div>
+        </div>
+        <div id="editModal" class="modal hidden">
+            <div class="modal-content">
+                <span id="editClose" class="close">&times;</span>
+                <h2>Edit Task</h2>
+                <form id="editForm" class="edit-form">
+                    <div class="form-group">
+                    <input type="text" id="editTitle" placeholder="Title" required/>
+                    </div>
+                    <div class="form-group">
+                    <textarea id="editDesc" rows="4" placeholder="Description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                    <input type="text" id="editProject" placeholder="Project" required/>
+                    </div>
+                    <div class="form-group">
+                    <input type="date" id="editDate" required/>
+                    </div>
+                    <div class="form-group">
+                    <div class="dropdown-wrapper">
+                    <select id="editPriority" name="editPriority" class="styled-select">
+                       <option value="Low">🟢 Low</option>
+                       <option value="Medium">🟡 Medium</option>
+                       <option value="High">🔴 High</option>
+                    </select>
+                    </div>
+                    </div>
+                    <button type="submit" class="saveBtn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="content"></div>
+    
+</body>
+</html>
